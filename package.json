@@ -1,0 +1,39 @@
+{
+  "name": "agent-evals",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "eval:run": "pnpm eval:contain",
+    "eval:contain": "ANVIA_LENS_RELEASE=$(git rev-parse HEAD) pnpm with-env tsx src/evals/contain.ts",
+    "eval:exact-match": "pnpm with-env tsx src/evals/exactMatch.ts",
+    "eval:faithfulness": "pnpm with-env tsx src/evals/faithfulness.ts",
+    "eval:abstention": "pnpm with-env tsx src/evals/abstention.ts",
+    "typecheck": "tsc --noEmit",
+    "with-env": "dotenv -e .env --"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "12.5.1",
+      "onFail": "download"
+    }
+  },
+  "packageManager": "pnpm@12.5.1",
+  "type": "module",
+  "devDependencies": {
+    "@types/node": "^26.6.2",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  },
+  "dependencies": {
+    "@anvia/core": "^1.5.0",
+    "@anvia/lens": "^1.2.0",
+    "@anvia/openai": "^1.1.5",
+    "dotenv-cli": "^11.0.0",
+    "zod": "^4.6.5"
+  }
+}
